@@ -73,4 +73,12 @@ class BonusTest {
     void du7_longRunBrokenInMiddle_noStreakBonus() {
         assertEquals(5, DataFlowTargets.bonus(new int[] {1, 1, 1, 1, 0, 1, 1, 1, 1}, 8));
     }
+
+    // ---------- Part C: test added to kill mutant M2 (best = present) ----------
+
+    @Test
+    @DisplayName("K1 [1,1,1,0,1,1,1,1] thr=10 -> 0: best updated at line 43 while present(7) != streak(4)")
+    void k1_bestUpdatedAfterBreak_presentDiffersFromStreak() {
+        assertEquals(0, DataFlowTargets.bonus(new int[] {1, 1, 1, 0, 1, 1, 1, 1}, 10));
+    }
 }
